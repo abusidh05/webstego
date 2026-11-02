@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Embed | Stego Web Vault</title>
+<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="ops-page">
+
+  <div class="scanlines"></div>
+  <div class="grid-bg"></div>
+
+  <header class="site-header">
+    <div class="logo">
+      <a href="/" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:4px;">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">WEB</span>
+        <span class="logo-accent">STEGO</span>
+        <span class="logo-bracket">]</span>
+      </a>
+    </div>
+    <nav>
+      <a href="/embed" class="nav-btn active">EMBED</a>
+      <a href="/extract" class="nav-btn nav-btn-secondary">EXTRACT</a>
+    </nav>
+  </header>
+
+  <main class="ops-layout">
+
+    <!-- LEFT PANEL: Controls -->
+    <section class="panel panel-left">
+      <div class="panel-header">
+        <span class="panel-tag">MODULE_01</span>
+        <h2 class="panel-title">EMBED SECRET</h2>
+        <div class="panel-line"></div>
+      </div>
+
+      <form id="embedForm" enctype="multipart/form-data">
+
+        <!-- Step 1: Carrier -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-num">01</span> CARRIER FILE
+            <span class="label-hint">PNG / JPG / WAV</span>
+          </label>
+          <div class="drop-zone" id="carrierDrop">
+            <input type="file" id="carrierFile" name="carrier_file"
+                   accept=".png,.jpg,.jpeg,.wav" required hidden />
+            <div class="drop-icon">⬡</div>
+            <div class="drop-text">DROP FILE OR <span class="drop-link">BROWSE</span></div>
+            <div class="drop-sub" id="carrierName">image.png / audio.wav</div>
+          </div>
+        </div>
+
+        <!-- Step 2: Secret type toggle -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-num">02</span> SECRET TYPE
+          </label>
+          <div class="toggle-group">
+            <button type="button" class="toggle-btn active" id="toggleText">TEXT</button>
+            <button type="button" class="toggle-btn" id="toggleFile">FILE</button>
+          </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-group" id="textSection">
+          <label class="form-label">
+            <span class="label-num">03</span> SECRET TEXT
+          </label>
+          <textarea class="form-textarea" name="secret_text" id="secretText"
+                    placeholder="Enter the message you want to hide..."></textarea>
+          <div class="char-counter"><span id="charCount">0</span> characters</div>
+        </div>
+
+        <!-- File input -->
+        <div class="form-group hidden" id="fileSection">
+          <label class="form-label">
+            <span class="label-num">03</span> SECRET FILE
+          </label>
+          <div class="drop-zone" id="secretDrop">
+            <input type="file" id="secretFile" name="secret_file" hidden />
+            <div class="drop-icon">◈</div>
+            <div class="drop-text">DROP FILE OR <span class="drop-link">BROWSE</span></div>
+            <div class="drop-sub" id="secretName">any file type</div>
+          </div>
+        </div>
+
+        <!-- Step 4: Password -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-num">04</span> PASSWORD <span class="label-optional">(Optional)</span>
+          </label>
+          <div class="password-wrap">
+            <input type="password" class="form-input" name="password" id="embedPassword"
+                   placeholder="Leave blank for no encryption" autocomplete="off" />
+            <button type="button" class="pwd-toggle" id="embedPwdToggle" title="Show/hide">◉</button>
+          </div>
+        </div>
+
+        <button type="submit" class="action-btn" id="embedBtn">
+          <span class="btn-spinner hidden" id="embedSpinner"></span>
+          <span id="embedBtnText">▶ EMBED & DOWNLOAD</span>
+        </button>
+
+      </form>
+    </section>
+
+    <!-- RIGHT PANEL: Output -->
+    <section class="panel panel-right">
+      <div class="panel-header">
+        <span class="panel-tag">OUTPUT</span>
+        <h2 class="panel-title">STATUS LOG</h2>
+        <div class="panel-line"></div>
+      </div>
+
+      <div class="output-terminal" id="outputTerminal">
+        <div class="terminal-line muted">> Stego Web Vault — Embed Module</div>
+        <div class="terminal-line muted">> Awaiting carrier file...</div>
+        <div class="terminal-cursor">_</div>
+      </div>
+
+      <div class="preview-box" id="previewBox">
+        <div class="preview-label">CARRIER PREVIEW</div>
+        <div class="preview-inner" id="previewInner">
+          <div class="preview-placeholder">No file loaded</div>
+        </div>
+        <div class="preview-meta" id="previewMeta"></div>
+      </div>
+
+      <div class="success-card hidden" id="successCard">
+        <div class="success-icon">✓</div>
+        <div class="success-title">DATA EMBEDDED</div>
+        <div class="success-sub" id="successSub">Stego file ready for download.</div>
+        <div class="capacity-bar">
+          <div class="capacity-label">PAYLOAD DENSITY</div>
+          <div class="capacity-track">
+            <div class="capacity-fill" id="capacityFill" style="width:0%"></div>
+          </div>
+          <div class="capacity-pct" id="capacityPct">0%</div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
