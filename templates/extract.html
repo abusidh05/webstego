@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Extract | Stego Web Vault</title>
+<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="ops-page">
+
+  <div class="scanlines"></div>
+  <div class="grid-bg"></div>
+
+  <header class="site-header">
+    <div class="logo">
+      <a href="/" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:4px;">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">WEB</span>
+        <span class="logo-accent">STEGO</span>
+        <span class="logo-bracket">]</span>
+      </a>
+    </div>
+    <nav>
+      <a href="/embed" class="nav-btn nav-btn-secondary">EMBED</a>
+      <a href="/extract" class="nav-btn active">EXTRACT</a>
+    </nav>
+  </header>
+
+  <main class="ops-layout">
+
+    <!-- LEFT PANEL: Controls -->
+    <section class="panel panel-left">
+      <div class="panel-header">
+        <span class="panel-tag">MODULE_02</span>
+        <h2 class="panel-title">EXTRACT SECRET</h2>
+        <div class="panel-line"></div>
+      </div>
+
+      <form id="extractForm" enctype="multipart/form-data">
+
+        <!-- Step 1: Stego file -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-num">01</span> STEGO FILE
+            <span class="label-hint">PNG / JPG / WAV</span>
+          </label>
+          <div class="drop-zone" id="stegoDrop">
+            <input type="file" id="stegoFile" name="stego_file"
+                   accept=".png,.jpg,.jpeg,.wav" required hidden />
+            <div class="drop-icon">◀</div>
+            <div class="drop-text">DROP STEGO FILE OR <span class="drop-link">BROWSE</span></div>
+            <div class="drop-sub" id="stegoName">stego_image.png / stego_audio.wav</div>
+          </div>
+        </div>
+
+        <!-- Step 2: Password -->
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-num">02</span> DECRYPTION PASSWORD <span class="label-optional">(if used)</span>
+          </label>
+          <div class="password-wrap">
+            <input type="password" class="form-input" name="password" id="extractPassword"
+                   placeholder="Leave blank if no encryption was used" autocomplete="off" />
+            <button type="button" class="pwd-toggle" id="extractPwdToggle" title="Show/hide">◉</button>
+          </div>
+        </div>
+
+        <button type="submit" class="action-btn" id="extractBtn">
+          <span class="btn-spinner hidden" id="extractSpinner"></span>
+          <span id="extractBtnText">◀ EXTRACT DATA</span>
+        </button>
+
+      </form>
+
+      <!-- Info box -->
+      <div class="info-box">
+        <div class="info-icon">ℹ</div>
+        <div class="info-text">
+          Upload a stego file created by Stego Web Vault. If a password was
+          used during embedding, enter the same password here. Extracted text
+          will appear in the output panel. Files will be downloaded automatically.
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL: Output -->
+    <section class="panel panel-right">
+      <div class="panel-header">
+        <span class="panel-tag">OUTPUT</span>
+        <h2 class="panel-title">EXTRACTED DATA</h2>
+        <div class="panel-line"></div>
+      </div>
+
+      <div class="output-terminal" id="outputTerminal">
+        <div class="terminal-line muted">> Stego Web Vault — Extract Module</div>
+        <div class="terminal-line muted">> Awaiting stego file...</div>
+        <div class="terminal-cursor">_</div>
+      </div>
+
+      <!-- Extracted text result -->
+      <div class="result-box hidden" id="resultBox">
+        <div class="result-header">
+          <span class="result-label">EXTRACTED TEXT</span>
+          <button class="copy-btn" id="copyBtn" title="Copy to clipboard">⊕ COPY</button>
+        </div>
+        <div class="result-content" id="resultContent"></div>
+        <div class="result-meta" id="resultMeta"></div>
+      </div>
+
+      <!-- File download result -->
+      <div class="file-result hidden" id="fileResult">
+        <div class="file-result-icon">◈</div>
+        <div class="file-result-title">FILE EXTRACTED</div>
+        <div class="file-result-sub" id="fileResultSub">File has been downloaded.</div>
+      </div>
+
+      <!-- Preview -->
+      <div class="preview-box" id="previewBox">
+        <div class="preview-label">STEGO FILE PREVIEW</div>
+        <div class="preview-inner" id="previewInner">
+          <div class="preview-placeholder">No file loaded</div>
+        </div>
+        <div class="preview-meta" id="previewMeta"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

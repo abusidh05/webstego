@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stego Web Vault</title>
+<link rel="stylesheet" href="/static/css/style.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="landing-page">
+
+  <!-- Scanline overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Animated grid background -->
+  <div class="grid-bg"></div>
+
+  <!-- Corner decorations -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">WEB</span>
+      <span class="logo-accent">STEGO</span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <nav>
+      <a href="/embed" class="nav-btn">EMBED</a>
+      <a href="/extract" class="nav-btn nav-btn-secondary">EXTRACT</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-tag">// CLASSIFIED SYSTEM v2.0 — AUTHORIZED USE ONLY</div>
+
+    <h1 class="hero-title">
+      <span class="title-line">HIDE DATA.</span>
+      <span class="title-line accent-line">STAY INVISIBLE.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Military-grade LSB steganography with AES-256-GCM encryption.<br>
+      Conceal secrets inside images and audio files — undetectable to the naked eye.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">◈</div>
+        <h3>LSB Steganography</h3>
+        <p>Embed data in the least-significant bits of pixels and audio samples — no visible quality loss.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⬡</div>
+        <h3>AES-256-GCM Encryption</h3>
+        <p>Optional password protection with authenticated encryption. Wrong password = no data.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">◇</div>
+        <h3>Multi-Format Support</h3>
+        <p>Works with PNG, JPEG images and WAV audio files. Embed text or entire binary files.</p>
+      </div>
+    </div>
+
+    <div class="cta-group">
+      <a href="/embed" class="cta-btn cta-primary">
+        <span class="btn-icon">▶</span> START EMBEDDING
+      </a>
+      <a href="/extract" class="cta-btn cta-secondary">
+        <span class="btn-icon">◀</span> EXTRACT DATA
+      </a>
+    </div>
+
+    <div class="status-bar">
+      <span class="status-dot active"></span>
+      <span class="status-text">SYSTEM ONLINE</span>
+      <span class="status-sep">|</span>
+      <span class="status-text">ENCRYPTION: AES-256-GCM</span>
+      <span class="status-sep">|</span>
+      <span class="status-text">PROTOCOL: LSB v2</span>
+    </div>
+  </main>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
